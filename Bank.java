@@ -2,11 +2,19 @@ package marcolius.BankCustomer;
 
 import java.util.Scanner;
 
+ /**
+  * @Description: Bank类用于构造实例Bank,并且实现了客户的增删改查
+  * @Author: MarcoLius
+  * @E-mail: 2961870074@qq.com
+  * @Creed: I am your father
+  * @Date 2020/8/5 23:48
+  */
+
 public class Bank {
     Tools tool = new Tools();
     Scanner input = new Scanner(System.in);
-    private Customer[] customers;
-    private int totalCus = 0;
+    private Customer[] customers;   //定义属性：客户数组
+    private int totalCus = 0;       //定义属性：总客户数（在增删改查操作中会用来当做判断条件）
 
     public Bank(int totalCus) {
         customers = new Customer[totalCus];
@@ -20,6 +28,9 @@ public class Bank {
         this.totalCus = totalCus;
     }
 
+     /**
+      * 查看客户列表方法(遍历客户数组)
+      */
     public void viewCustomers() {
         System.out.println("-----------------------客户列表-----------------------");
         System.out.println("序号\t\t姓名\t\t性别\t\t年龄\t\t\t电话\t\t\t\t邮箱");
@@ -37,6 +48,9 @@ public class Bank {
         return totalCus;
     }
 
+     /**
+      * 增加客户方法
+      */
     public void insert() {
         customers[totalCus] = new Customer();
         System.out.println("-----------------------------------------------------");
@@ -58,6 +72,7 @@ public class Bank {
 
     public void update(int index) {
         System.out.println("-----------------------------------------------------");
+//        方式一：直接更改对象的属性值
 //        System.out.print("姓名(" + customers[index].getName() + ")：");
 //        customers[index].setName(tool.newString(customers[index].getName()));
 //        System.out.print("性别(" + customers[index].getGender() + ")：");
@@ -68,6 +83,8 @@ public class Bank {
 //        customers[index].setTel(tool.newString(customers[index].getTel()));
 //        System.out.print("邮箱(" + customers[index].getEmail() + ")：");
 //        customers[index].setEmail(tool.newString(customers[index].getEmail()));
+//
+//        方式二：new一个新的对象，写入修改后的属性，将新的对象赋值给客户数组中对应客户
         System.out.print("姓名(" + customers[index].getName() + ")：");
         String newName = tool.firstNewString(customers[index].getName());
         System.out.print("性别(" + customers[index].getGender() + ")：");
@@ -84,6 +101,10 @@ public class Bank {
         System.out.println();
     }
 
+     /**
+      * 删除用户方法
+      * @param index 指定要删除客户的索引
+      */
     public void delete(int index) {
         for (int i = index; i < totalCus - 1; i++) {
             customers[index] = customers[index + 1];

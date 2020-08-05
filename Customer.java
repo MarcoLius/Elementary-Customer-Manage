@@ -1,15 +1,22 @@
 package marcolius.BankCustomer;
 
+ /**
+  * @Description: 客户类，用于创建客户实例，定义了客户的属性
+  * @Author: MarcoLius
+  * @E-mail: 2961870074@qq.com
+  * @Creed: I am your father
+  * @Date 2020/8/6 0:02
+  */
+
 public class Customer {
-    private String name;
-    private String tel;
-    private String email;
-    private int age;
-    private char gender;
-    private Account account;
+    private String name;   //客户姓名
+    private String tel;    //客户电话
+    private String email;  //客户邮箱
+    private int age;       //客户年龄
+    private char gender;   //客户性别
 
     /**
-     * 空参构造器与全参构造器
+     * 提供空参构造器与全参构造器
      */
     public Customer() {
 
@@ -27,6 +34,10 @@ public class Customer {
         this.name = name;
     }
 
+     /**
+      * 设置客户性别方法（判断输入性别是否为合法字符）
+      * @param gender 客户性别
+      */
     public void setGender(char gender) {
         if (gender == '男' || gender == '女') {
             this.gender = gender;
@@ -35,6 +46,10 @@ public class Customer {
         }
     }
 
+     /**
+      * 设置客户年龄方法（判断输入年龄是否为合法数字）
+      * @param age 客户年龄
+      */
     public void setAge(int age) {
         if (age > 0) {
             this.age = age;
@@ -49,10 +64,6 @@ public class Customer {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
     }
 
     public char getGender() {
@@ -73,9 +84,5 @@ public class Customer {
 
     public String getEmail() {
         return email;
-    }
-
-    public Account getAccount() {
-        return account;
     }
 }
